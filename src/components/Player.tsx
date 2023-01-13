@@ -24,16 +24,16 @@ export default function Player({ state, actions }: PlayerProps) {
     audioRef.current?.fastSeek(time)
   }
 
-  function formatTime(totalSeconds: number, position: number) {
-    if (position > 0 && !totalSeconds) {
-      return '-- : --'
-    }
+  // function formatTime(totalSeconds: number, position: number) {
+  //   if (position > 0 && !totalSeconds) {
+  //     return '-- : --'
+  //   }
 
-    const minutes = Math.floor(totalSeconds / 60)
-    const seconds = Math.floor(totalSeconds - minutes * 60)
+  //   const minutes = Math.floor(totalSeconds / 60)
+  //   const seconds = Math.floor(totalSeconds - minutes * 60)
 
-    return `${minutes < 10 ? '0' + minutes : minutes}:${seconds < 10 ? '0' + seconds : seconds}`
-  }
+  //   return `${minutes < 10 ? '0' + minutes : minutes}:${seconds < 10 ? '0' + seconds : seconds}`
+  // }
 
   useEffect(() => {
     if (audioRef.current && audioRef.current.paused) {
@@ -60,11 +60,12 @@ export default function Player({ state, actions }: PlayerProps) {
       ) : null}
       <Slider min={0} max={duration} step={1} value={currentTime} onChange={setTime} />
       <div className='flex gap-2 justify-start items-center'>
-        <p className='font-medium tabular-nums text-lg md:mr-1 flex-shrink-0'>
+        <img style={{ height: 60 }} className='-my-2 -ml-3' src={song?.image} alt='' />
+        {/* <p className='font-medium tabular-nums text-lg md:mr-1 flex-shrink-0'>
           {formatTime(currentTime, 0)}
           <span className='font-light'> / </span>
           {formatTime(duration, 1)}
-        </p>
+        </p> */}
         <p className='flex-shrink truncate'>{song?.title}</p>
         <div className='flex-grow'></div>
         <div className='flex-shrink-0'>
