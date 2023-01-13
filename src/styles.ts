@@ -35,7 +35,7 @@ export const inputCN = [
 
 export const checkboxCN = [`text-purple-600`, 'border-stone-500', 'shadow-sm', 'disabled:opacity-50', focusCN].join(' ')
 
-const buttonCommon = ['font-medium', 'rounded-md', 'disabled:opacity-50'].join(' ')
+const buttonCommon = ['font-medium', 'disabled:opacity-50'].join(' ')
 
 export const buttonCN = {
   common: buttonCommon,

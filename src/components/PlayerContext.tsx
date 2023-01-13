@@ -10,7 +10,7 @@ const defaultState = {
 }
 const initialState = savedState || defaultState
 
-type Playlist = {
+export type Playlist = {
   id: number
   title: string
   items: SearchResult[]
@@ -99,6 +99,7 @@ function playerContextReducer(state: PlayerState, action: Action) {
     case PLAYER_ACTIONS.PLAY_PLAYLIST:
       return {
         ...state,
+        index: 0,
         queue: payload.items.slice()
       }
     case PLAYER_ACTIONS.ADD_TO_PLAYLIST:
@@ -154,6 +155,7 @@ export function usePlayerReducer() {
   const [state, dispatch] = useReducer(playerContextReducer, initialState)
 
   useEffect(() => {
+    console.log('saving state')
     localStorage.setItem(STORAGE_KEY, JSON.stringify(state))
   }, [state])
 
