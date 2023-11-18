@@ -42,12 +42,14 @@ const terminator = createHttpTerminator({ server })
 
 process.on('SIGTERM', async () => {
   console.log('SIGTERM signal received: closing HTTP server')
+  server.close()
   await terminator.terminate()
   console.log('HTTP server closed')
   process.exit(0)
 })
 process.on('SIGINT', async () => {
   console.log('SIGINT signal received: closing HTTP server')
+  server.close()
   await terminator.terminate()
   console.log('HTTP server closed')
   process.exit(0)
