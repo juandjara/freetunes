@@ -1,6 +1,6 @@
 import { API_URL, INVIDIOUS_URL } from '@/config'
-import { CloudArrowDown, DotsThree, DownloadSimple, ListPlus, Play, X } from 'phosphor-react'
-import { json, LoaderFunction, useLoaderData, useOutletContext, useSearchParams } from 'react-router-dom'
+import { DotsThree, DownloadSimple, ListPlus, Play, X } from 'phosphor-react'
+import { json, LoaderFunction, useLoaderData, useOutletContext } from 'react-router-dom'
 import { buttonCN } from '@/styles'
 import { Playlist, usePlayerReducer } from '@/components/PlayerContext'
 import { Menu, Transition } from '@headlessui/react'
@@ -12,6 +12,8 @@ export type SearchResult = {
   lengthSeconds: number
   image: string
 }
+
+console.log(import.meta.env)
 
 export const loader: LoaderFunction = async ({ request }) => {
   const query = new URL(request.url).searchParams.get('q')

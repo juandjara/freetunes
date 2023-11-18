@@ -1,2 +1,2 @@
-export const INVIDIOUS_URL = 'https://invidious.epicsite.xyz'
-export const API_URL = 'https://fta.djara.dev'
+export const INVIDIOUS_URL = import.meta.env.VITE_INVIDIOUS_URL as string
+export const API_URL = '/api'
