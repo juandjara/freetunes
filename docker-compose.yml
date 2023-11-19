@@ -4,8 +4,6 @@ services:
     build: .
     container_name: freetunes
     command: npm run dev:docker
-    environment:
-      - NODE_ENV=development # used to run vite in dev mode with HMR
     ports:
       - '3000:3000'
     volumes:

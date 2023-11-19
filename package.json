@@ -7,7 +7,7 @@
   "scripts": {
     "dev": "nodemon api/server.ts",
     "dev:docker": "npm rebuild esbuild && npm run dev",
-    "start": "NODE_ENV=production vite-node api/server.ts",
+    "start": "vite-node --mode production api/server.ts",
     "build": "tsc && vite build",
     "preview": "vite preview",
     "lint": "eslint './**/*.{ts,tsx}' --ignore-path .gitignore",

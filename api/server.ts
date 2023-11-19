@@ -36,6 +36,10 @@ const PORT = Number(process.env.PORT || 3000)
 
 const GRACE_PERIOD = 5000
 
+ViteExpress.config({
+  mode: import.meta.env.MODE === 'production' ? 'production' : 'development'
+})
+
 const server = stoppable(
   ViteExpress.listen(app, PORT, () => {
     console.log(`🚀 Server is listening on port`, PORT)
