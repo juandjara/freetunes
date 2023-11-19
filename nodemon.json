@@ -2,6 +2,6 @@
   "watch": ["src", "api"],
   "ext": "ts",
   "execMap": {
-    "ts": "node --loader ts-node/esm --experimental-specifier-resolution=node"
+    "ts": "vite-node"
   }
 }

@@ -9,7 +9,7 @@ import { stream } from './routes/stream'
 import download from './routes/download'
 import autocomplete from './routes/autocomplete'
 import dotenv from 'dotenv'
-import { createHttpTerminator } from 'http-terminator'
+import stoppable from 'stoppable'
 
 dotenv.config()
 process.env.VITE_INVIDIOUS_URL = process.env.INVIDIOUS_URL
@@ -34,23 +34,21 @@ app.get('/api/autocomplete', autocomplete)
 
 const PORT = Number(process.env.PORT || 3000)
 
-const server = ViteExpress.listen(app, PORT, () => {
-  console.log(`🚀 Server is listening on port`, PORT)
-})
+const GRACE_PERIOD = 5000
 
-const terminator = createHttpTerminator({ server })
+const server = stoppable(
+  ViteExpress.listen(app, PORT, () => {
+    console.log(`🚀 Server is listening on port`, PORT)
+  }),
+  GRACE_PERIOD
+)
 
-process.on('SIGTERM', async () => {
+const stopServer = () => {
   console.log('SIGTERM signal received: closing HTTP server')
   server.close()
-  await terminator.terminate()
   console.log('HTTP server closed')
   process.exit(0)
-})
-process.on('SIGINT', async () => {
-  console.log('SIGINT signal received: closing HTTP server')
-  server.close()
-  await terminator.terminate()
-  console.log('HTTP server closed')
-  process.exit(0)
-})
+}
+
+process.on('SIGTERM', stopServer)
+process.on('SIGINT', stopServer)

@@ -18,6 +18,5 @@ RUN npm prune --production
 
 EXPOSE 3000
 
-ENTRYPOINT ["/sbin/tini", "--"]
-
-CMD [ "npm", "start" ]
+ENTRYPOINT ["tini", "-v", "--"]
+CMD ["vite-node", "api/server.ts"]
