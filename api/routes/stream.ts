@@ -2,7 +2,7 @@ import axios from 'axios'
 import { Request, Response } from 'express'
 import getAudioStreamDetails from '../lib/getAudioStreamDetails'
 
-export async function stream(req: Request, res: Response) {
+export default async function stream(req: Request, res: Response) {
   const id = req.params.ytid
   const streamDef = await getAudioStreamDetails(id, 'audio/webm')
   const response = await axios.get(streamDef.url, { responseType: 'stream' })

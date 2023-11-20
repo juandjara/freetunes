@@ -5,9 +5,10 @@ import pkg from '../package.json' assert { type: 'json' }
 import cors from 'cors'
 // @ts-ignore
 import sendSeekable from 'send-seekable'
-import { stream } from './routes/stream'
+import stream from './routes/stream'
 import download from './routes/download'
 import autocomplete from './routes/autocomplete'
+import search from './routes/search'
 import stoppable from 'stoppable'
 
 const app = express()
@@ -27,6 +28,7 @@ app.get('/api', (_, res) => {
 app.get('/api/stream/:ytid', stream)
 app.get('/api/dl/:ytid', download)
 app.get('/api/autocomplete', autocomplete)
+app.get('/api/search', search)
 
 const PORT = Number(process.env.PORT || 3000)
 
