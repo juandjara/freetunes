@@ -7,7 +7,6 @@ on:
 env:
   REGISTRY: ghcr.io
   IMAGE_NAME: ${{ github.repository }}
-  VITE_INVIDIOUS_URL: ${{ secrets.VITE_INVIDIOUS_URL }}
 
 jobs:
   build-and-publish:

@@ -1,7 +1,7 @@
-const invidiousURL = import.meta.env.VITE_INVIDIOUS_URL
+const invidiousURL = process.env.INVIDIOUS_URL
 
 if (!invidiousURL) {
-  throw new Error('VITE_INVIDIOUS_URL environment variable is not set')
+  throw new Error('INVIDIOUS_URL environment variable is not set')
 }
 
 export default {
