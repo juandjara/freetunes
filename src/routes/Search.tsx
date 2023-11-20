@@ -13,8 +13,6 @@ export type SearchResult = {
   image: string
 }
 
-console.log(import.meta.env)
-
 export const loader: LoaderFunction = async ({ request }) => {
   const query = new URL(request.url).searchParams.get('q')
   if (!query) {

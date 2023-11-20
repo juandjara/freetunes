@@ -8,11 +8,7 @@ import sendSeekable from 'send-seekable'
 import { stream } from './routes/stream'
 import download from './routes/download'
 import autocomplete from './routes/autocomplete'
-import dotenv from 'dotenv'
 import stoppable from 'stoppable'
-
-dotenv.config()
-process.env.VITE_INVIDIOUS_URL = process.env.INVIDIOUS_URL
 
 const app = express()
 
