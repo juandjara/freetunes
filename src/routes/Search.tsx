@@ -1,4 +1,4 @@
-import { API_URL, INVIDIOUS_URL } from '@/config'
+import { API_URL } from '@/config'
 import { DotsThree, DownloadSimple, ListPlus, Play, X } from 'phosphor-react'
 import { json, LoaderFunction, useLoaderData, useOutletContext } from 'react-router-dom'
 import { buttonCN } from '@/styles'
@@ -19,18 +19,9 @@ export const loader: LoaderFunction = async ({ request }) => {
     return { results: [] }
   }
 
-  const res = await fetch(`${INVIDIOUS_URL}/api/v1/search?q=${query}`)
+  const res = await fetch(`${API_URL}/search?q=${query}`)
   const data = await res.json()
-  const parsed = data.map((d: any) => {
-    return {
-      id: d.videoId,
-      title: d.title,
-      lengthSeconds: d.lengthSeconds,
-      image: `https://i.ytimg.com/vi/${d.videoId}/mqdefault.jpg`
-    }
-  })
-
-  return json<SearchResult[]>(parsed)
+  return json<SearchResult[]>(data)
 }
 
 export default function Search() {
